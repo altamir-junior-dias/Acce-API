@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <PackageId>api-bootstrapping-framework</PackageId>
+    <Version>0.1.4</Version>
+    <Authors>altamir.junior.dias</Authors>
+    <Company>Altamir Junior Dias</Company>
+    <PackageTags>http web api</PackageTags>
+    <Description>Core utility classes to build web api</Description>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="automapper" Version="9.0.0" />
+    <PackageReference Include="dapper" Version="2.0.30" />
+    <PackageReference Include="dapper.contrib" Version="2.0.30" />
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
+
+</Project>

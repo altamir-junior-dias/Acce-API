@@ -35,7 +35,7 @@ namespace API
             services.AddSingleton(ConfigureMapper());
 
             services.AddScoped<IDbConnection>(_ => GetConnection());
-            BootstrappingInjector.Config(services);
+            AcceInjector.Config(services);
             ServicesInjector.Config(services);
             RepositoriesInjector.Config(services);
         }

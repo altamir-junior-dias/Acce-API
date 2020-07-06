@@ -27,7 +27,7 @@ namespace API.Controllers
         {
             Func<dynamic> process = () => { return service.SearchAll(); };
 
-            return ExecuteProcess(process, "customer");
+            return ExecuteProcess(process);
         }
 
         [HttpPost, Route("")]
@@ -35,7 +35,7 @@ namespace API.Controllers
         {
             Func<long> process = () => { return service.Insert(mapper.Map<Customer>(customer)); };
 
-            return ExecuteProcess(process, "customer");
+            return ExecuteProcess(process);
         }
 
         [HttpPut, Route("{id}")]
@@ -43,7 +43,7 @@ namespace API.Controllers
         {
             Action process = () => { service.Update(mapper.Map<Customer>(customer, opt => opt.AfterMap((_, entity) => ((EntityBase)entity).Id = id))); };
 
-            return ExecuteProcess(process, "customer");
+            return ExecuteProcess(process);
         }
 
         [HttpDelete, Route("{id}")]
@@ -51,7 +51,7 @@ namespace API.Controllers
         {
             Action process = () => { service.Delete(id); };
 
-            return ExecuteProcess(process, "customer");
+            return ExecuteProcess(process);
         }
 
         [HttpGet, Route("{id}")]
@@ -59,7 +59,7 @@ namespace API.Controllers
         {
             Func<dynamic> process = () => { return service.SearchById(id); };
 
-            return ExecuteProcess(process, "customer");
+            return ExecuteProcess(process);
         }
     }
 }

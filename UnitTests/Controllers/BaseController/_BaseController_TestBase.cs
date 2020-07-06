@@ -1,5 +1,5 @@
 using System;
-using Bootstrapping.Controllers;
+using Acce.Controllers;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Controllers
@@ -21,14 +21,14 @@ namespace Controllers
 
     public class BaseControllerWrapper : BaseController
     {
-        new public ActionResult ExecuteProcess<T>(Func<T> process, string dataName)
+        new public ActionResult ExecuteProcess<T>(Func<T> process)
         {
-            return base.ExecuteProcess(process, dataName);
+            return base.ExecuteProcess(process);
         }
  
-        new public ActionResult ExecuteProcess(Action process, string dataName)
+        new public ActionResult ExecuteProcess(Action process)
         {
-            return base.ExecuteProcess(process, dataName);
+            return base.ExecuteProcess(process);
         }
 
     }

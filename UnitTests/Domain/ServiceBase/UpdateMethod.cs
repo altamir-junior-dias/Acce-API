@@ -1,5 +1,5 @@
 using System;
-using Bootstrapping.Exceptions;
+using Acce.Exceptions;
 using FakeItEasy;
 using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -57,7 +57,7 @@ namespace Domain
             Action action = () => service.Update(new SampleEntity());
             
             //assertions
-            action.Should().Throw<PropertyNotProvidedException>();
+            action.Should().Throw<ValidationIssueException>();
         }    
 
         [TestMethod]

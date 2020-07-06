@@ -1,4 +1,4 @@
-using Bootstrapping.Domain;
+using Acce.Domain;
 
 namespace Domain.Entities
 {

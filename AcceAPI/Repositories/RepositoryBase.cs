@@ -1,10 +1,10 @@
-using Bootstrapping.Wrappers;
+using Acce.Wrappers;
 using Dapper.Contrib.Extensions;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 
-namespace Bootstrapping.Repositories
+namespace Acce.Repositories
 {
     public abstract class RepositoryBase<TR> : IRepository<TR> 
         where TR : RecordBase, new()

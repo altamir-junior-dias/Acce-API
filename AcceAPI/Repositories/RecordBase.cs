@@ -1,4 +1,4 @@
-namespace Bootstrapping.Repositories
+namespace Acce.Repositories
 {
     public abstract class RecordBase
     {

@@ -1,12 +1,12 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <PackageId>api-bootstrapping-framework</PackageId>
-    <Version>0.1.4</Version>
+    <PackageId>acce-api</PackageId>
+    <Version>0.1.6</Version>
     <Authors>altamir.junior.dias</Authors>
     <Company>Altamir Junior Dias</Company>
     <PackageTags>http web api</PackageTags>
-    <Description>Core utility classes to build web api</Description>
+    <Description>Core utility classes to accelerate to build web api</Description>
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 

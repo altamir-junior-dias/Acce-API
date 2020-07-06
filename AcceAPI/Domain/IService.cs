@@ -1,6 +1,7 @@
+using System;
 using System.Collections.Generic;
 
-namespace Bootstrapping.Domain
+namespace Acce.Domain
 {
     public interface IService<TE>
         where TE : EntityBase

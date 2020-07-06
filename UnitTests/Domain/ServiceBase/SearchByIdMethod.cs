@@ -1,5 +1,5 @@
 using System;
-using Bootstrapping.Exceptions;
+using Acce.Exceptions;
 using FakeItEasy;
 using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;

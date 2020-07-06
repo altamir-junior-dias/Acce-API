@@ -1,6 +1,6 @@
 using System;
 
-namespace Bootstrapping.Wrappers
+namespace Acce.Wrappers
 {
     public interface IGarbageCollectorWrapper {
         void SuppressFinalize(Object target);

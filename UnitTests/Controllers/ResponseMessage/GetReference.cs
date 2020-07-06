@@ -1,4 +1,4 @@
-using Bootstrapping.Controllers;
+using Acce.Controllers;
 using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -13,9 +13,6 @@ namespace Controllers
         [DataRow(ResponseType.DatabaseException, "")]
         [DataRow(ResponseType.DataNotFound, "data")]
         [DataRow(ResponseType.DataNotProvided, "data")]
-        [DataRow(ResponseType.ContentBodyNotProvided, "content")]
-        [DataRow(ResponseType.ParameterNotProvided, "parameter")]
-        [DataRow(ResponseType.PropertyNotProvided, "property")]
         [DataRow(ResponseType.RoleFail, "")]
         public void GetReference_DifferentType(ResponseType responseType, string expectedReference) 
         {

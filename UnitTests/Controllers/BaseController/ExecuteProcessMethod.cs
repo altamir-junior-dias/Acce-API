@@ -1,6 +1,7 @@
 using System;
 using System.Data;
-using Bootstrapping.Exceptions;
+using Acce.Exceptions;
+using Acce.Domain;
 using FluentAssertions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -19,10 +20,10 @@ namespace Controllers
             Func<long> process = () => { return 0; };
             
             //execution
-            var actionResult = controller.ExecuteProcess(process, "");
+            var actionResult = controller.ExecuteProcess(process) as ObjectResult;
 
             //assertion
-            actionResult.Should().BeOfType(typeof(OkObjectResult));
+            actionResult.Should().BeAssignableTo<OkObjectResult>();
         }
 
         [TestMethod]
@@ -31,34 +32,34 @@ namespace Controllers
             Action process = () => { return; };
             
             //execution
-            var actionResult = controller.ExecuteProcess(process, "");
+            var actionResult = controller.ExecuteProcess(process) as StatusCodeResult;
 
             //assertion
-            actionResult.Should().BeOfType(typeof(OkResult));
+            actionResult.Should().BeAssignableTo<OkResult>();
         }
 
         [TestMethod]
-        public void BadRequestFunction_PropertyNotProvidedException() {
+        public void BadRequestFunction_ValidationIssueException() {
             //setup
-            Func<long> process = () => { throw new PropertyNotProvidedException("property"); };
+            Func<long> process = () => { throw new ValidationIssueException(new ValidationIssue()); };
             
             //execution
-            var actionResult = controller.ExecuteProcess(process, "");
+            var actionResult = controller.ExecuteProcess(process) as ObjectResult;
 
             //assertion
-            actionResult.Should().BeOfType(typeof(BadRequestObjectResult));
+            actionResult.Should().BeAssignableTo<BadRequestObjectResult>();
         }  
 
         [TestMethod]
-        public void BadRequestAction_PropertyNotProvidedException() {
+        public void BadRequestAction_ValidationIssueException() {
             //setup
-            Action process = () => { throw new PropertyNotProvidedException("property"); };
+            Action process = () => { throw new ValidationIssueException(new ValidationIssue()); };
             
             //execution
-            var actionResult = controller.ExecuteProcess(process, "");
+            var actionResult = controller.ExecuteProcess(process) as ObjectResult;
 
             //assertion
-            actionResult.Should().BeOfType(typeof(BadRequestObjectResult));
+            actionResult.Should().BeAssignableTo<BadRequestObjectResult>();
         }  
 
         [DataTestMethod]
@@ -69,10 +70,10 @@ namespace Controllers
             Func<long> process = () => { throw new ItemNotFoundException(context); };
             
             //execution
-            var actionResult = controller.ExecuteProcess(process, "");
+            var actionResult = controller.ExecuteProcess(process) as ObjectResult;
 
             //assertion
-            actionResult.Should().BeOfType(typeof(BadRequestObjectResult));
+            actionResult.Should().BeAssignableTo<NotFoundObjectResult>();
         }    
 
         [DataTestMethod]
@@ -83,10 +84,10 @@ namespace Controllers
             Action process = () => { throw new ItemNotFoundException(context); };
             
             //execution
-            var actionResult = controller.ExecuteProcess(process, "");
+            var actionResult = controller.ExecuteProcess(process) as ObjectResult;
 
             //assertion
-            actionResult.Should().BeOfType(typeof(BadRequestObjectResult));
+            actionResult.Should().BeAssignableTo<NotFoundObjectResult>();
         }    
 
         [TestMethod]
@@ -95,10 +96,11 @@ namespace Controllers
             Func<long> process = () => { throw new DataException("data"); };
             
             //execution
-            var actionResult = controller.ExecuteProcess(process, "");
+            var actionResult = controller.ExecuteProcess(process) as ObjectResult;
 
             //assertion
-            actionResult.Should().BeOfType(typeof(BadRequestObjectResult));
+            actionResult.Should().BeAssignableTo<ObjectResult>();
+            actionResult.StatusCode.Should().Be(500);
         }    
 
         [TestMethod]
@@ -107,10 +109,11 @@ namespace Controllers
             Action process = () => { throw new DataException("data"); };
             
             //execution
-            var actionResult = controller.ExecuteProcess(process, "");
+            var actionResult = controller.ExecuteProcess(process) as ObjectResult;
 
             //assertion
-            actionResult.Should().BeOfType(typeof(BadRequestObjectResult));
+            actionResult.Should().BeAssignableTo<ObjectResult>();
+            actionResult.StatusCode.Should().Be(500);
         }    
 
         [TestMethod]
@@ -119,10 +122,11 @@ namespace Controllers
             Func<long> process = () => { throw new Exception("error"); };
             
             //execution
-            var actionResult = controller.ExecuteProcess(process, "");
+            var actionResult = controller.ExecuteProcess(process) as ObjectResult;
 
             //assertion
-            actionResult.Should().BeOfType(typeof(BadRequestObjectResult));
+            actionResult.Should().BeAssignableTo<ObjectResult>();
+            actionResult.StatusCode.Should().Be(500);
         }    
 
         [TestMethod]
@@ -131,10 +135,11 @@ namespace Controllers
             Action process = () => { throw new Exception("error"); };
             
             //execution
-            var actionResult = controller.ExecuteProcess(process, "");
+            var actionResult = controller.ExecuteProcess(process) as ObjectResult;
 
             //assertion
-            actionResult.Should().BeOfType(typeof(BadRequestObjectResult));
+            actionResult.Should().BeAssignableTo<ObjectResult>();
+            actionResult.StatusCode.Should().Be(500);
         }    
     }
 }

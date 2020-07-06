@@ -2,7 +2,7 @@ using System.Data;
 using System.Data.SqlClient;
 using API.Entities.Mappers;
 using AutoMapper;
-using Bootstrapping.Injector;
+using Acce.Injector;
 using Data.Repositories.Injectors;
 using Domain.Entities.Mappers;
 using Domain.Services.Injectors;

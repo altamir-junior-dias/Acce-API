@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 using System.Data;
-using Bootstrapping.Repositories;
+using Acce.Repositories;
 
-namespace Bootstrapping.Wrappers
+namespace Acce.Wrappers
 {
     public interface IConnectionWrapper
     {

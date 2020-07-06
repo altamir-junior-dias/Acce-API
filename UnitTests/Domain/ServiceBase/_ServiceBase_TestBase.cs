@@ -1,6 +1,6 @@
 using AutoMapper;
-using Bootstrapping.Domain;
-using Bootstrapping.Repositories;
+using Acce.Domain;
+using Acce.Repositories;
 using FakeItEasy;
 
 namespace Domain

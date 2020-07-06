@@ -1,10 +1,10 @@
 using Microsoft.Extensions.DependencyInjection;
-using Bootstrapping.Wrappers;
-using Bootstrapping.Repositories;
+using Acce.Wrappers;
+using Acce.Repositories;
 
-namespace Bootstrapping.Injector
+namespace Acce.Injector
 {
-    public static class BootstrappingInjector
+    public static class AcceInjector
     {
         public static void Config(IServiceCollection services)
         {

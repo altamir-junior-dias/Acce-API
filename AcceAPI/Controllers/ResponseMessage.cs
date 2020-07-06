@@ -1,4 +1,8 @@
-namespace Bootstrapping.Controllers
+using System.Collections.Generic;
+using System.Linq;
+using Acce.Domain;
+
+namespace Acce.Controllers
 {
     public class ResponseMessage
     {
@@ -23,9 +27,7 @@ namespace Bootstrapping.Controllers
                 {
                     if (responseType == ResponseType.DataNotFound) return string.Format("{0} not found.", reference);
                     if (responseType == ResponseType.DataNotProvided) return string.Format("The {0} data was not provided.", reference);
-                    if (responseType == ResponseType.ContentBodyNotProvided) return string.Format("{0} must be provided on body.", reference);
-                    if (responseType == ResponseType.ParameterNotProvided) return string.Format("{0} must be provided on parameters.", reference);
-                    if (responseType == ResponseType.PropertyNotProvided) return string.Format("The {0} property was not provided.", reference);
+                    if (responseType == ResponseType.ValidationIssues) return string.Format("Some validation issues must be resolved: {0}", reference);
 
                     return "";
                 }
@@ -36,6 +38,11 @@ namespace Bootstrapping.Controllers
         {
             this.responseType = responseType;
             this.reference = reference;
+        }
+        public ResponseMessage(ResponseType responseType, IList<ValidationIssue> validationIssues)
+        {
+            this.responseType = responseType;
+            this.reference = string.Join(", ", validationIssues.Select(vi => vi.IssueType == IssueTypeEnum.PropertyNotInformed ? string.Format("{0} must be provided", vi.PropertyName) : vi.Message));
         }
     }
 }

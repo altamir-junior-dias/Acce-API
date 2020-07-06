@@ -1,4 +1,4 @@
-using Bootstrapping.Repositories;
+using Acce.Repositories;
 using Data.Entities;
 using Data.Repositories.Interfaces;
 

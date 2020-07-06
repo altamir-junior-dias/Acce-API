@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26124.0
 MinimumVisualStudioVersion = 15.0.26124.0
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bootstrapping", "Bootstrapping\Bootstrapping.csproj", "{A16CD356-B1A5-4571-9DDA-301AB881D516}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AcceAPI", "AcceAPI\AcceAPI.csproj", "{A16CD356-B1A5-4571-9DDA-301AB881D516}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests", "UnitTests\UnitTests.csproj", "{5A51A827-8812-46BA-8DF7-715A1EE9D37F}"
 EndProject

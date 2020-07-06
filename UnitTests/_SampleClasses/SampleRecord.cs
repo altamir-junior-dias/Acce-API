@@ -1,4 +1,4 @@
-using Bootstrapping.Repositories;
+using Acce.Repositories;
 using Dapper.Contrib.Extensions;
 
 [Table("sample")]

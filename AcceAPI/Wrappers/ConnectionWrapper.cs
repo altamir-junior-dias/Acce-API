@@ -1,10 +1,10 @@
 using System.Collections.Generic;
 using System.Data;
-using Bootstrapping.Repositories;
+using Acce.Repositories;
 using Dapper;
 using Dapper.Contrib.Extensions;
 
-namespace Bootstrapping.Wrappers
+namespace Acce.Wrappers
 {
     public class ConnectionWrapper : IConnectionWrapper
     {

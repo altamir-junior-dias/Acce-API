@@ -1,15 +1,19 @@
 using AutoMapper;
-using Bootstrapping.Exceptions;
-using Bootstrapping.Repositories;
+using Acce.Exceptions;
+using Acce.Repositories;
 using System.Collections.Generic;
+using System.Linq.Expressions;
+using System;
 
-namespace Bootstrapping.Domain
+namespace Acce.Domain
 {
     public abstract class ServiceBase<TE, TR, TIR> : IService<TE> 
         where TE : EntityBase 
         where TR : RecordBase
         where TIR : IRepository<TR>
     {
+        private IList<ValidationIssue> validationIssues;
+
         protected readonly TIR repository;
         protected readonly IUnitOfWork unitOfWork;
         protected readonly IMapper mapper;
@@ -55,7 +59,7 @@ namespace Bootstrapping.Domain
 
         public virtual void Update(TE item, bool forceCommit = true)
         {
-            if (item.Id == 0) throw new PropertyNotProvidedException("Id");
+            if (item.Id == 0) throw new ValidationIssueException(new ValidationIssue { IssueType = IssueTypeEnum.PropertyNotInformed, PropertyName = "Id" });
             Validate(item);
 
             var updated = repository.Update(mapper.Map<TR>(item));
@@ -67,7 +71,7 @@ namespace Bootstrapping.Domain
 
         public virtual void Delete(long id, bool forceCommit = true)
         {
-            if (id == 0) throw new PropertyNotProvidedException("Id");
+            if (id == 0) throw new ValidationIssueException(new ValidationIssue { IssueType = IssueTypeEnum.PropertyNotInformed, PropertyName = "Id" });
 
             var deleted = repository.Delete(id);
             if (!deleted) throw new ItemNotFoundException(typeof(TE).Name);
@@ -76,8 +80,39 @@ namespace Bootstrapping.Domain
             return;
         }
 
-        public virtual void Validate(TE item)
-        {            
+        public void AddPropertyNotInformedIssue<T>(Expression<Func<T, object>> expression) where T : EntityBase
+        {
+            var member = expression.Body as MemberExpression;
+            if (member == null) member = (expression.Body as UnaryExpression)?.Operand as MemberExpression;
+
+            validationIssues.Add(new ValidationIssue { PropertyName = member.Member.Name });
+        }
+
+        public void AddCustomIssue(string message)
+        {
+            validationIssues.Add(new ValidationIssue { Message = message });
+        }
+
+        public virtual void Validating(TE item)
+        {
+        }
+
+        public void Validate(TE item)
+        {
+            validationIssues = new List<ValidationIssue>();
+            
+            Validating(item);
+
+            if (validationIssues.Count > 0) throw new ValidationIssueException(validationIssues);
+        }
+
+        public void Validate(Action validations)
+        {
+            validationIssues = new List<ValidationIssue>();
+            
+            validations();
+
+            if (validationIssues.Count > 0) throw new ValidationIssueException(validationIssues);
         }
     }
 }

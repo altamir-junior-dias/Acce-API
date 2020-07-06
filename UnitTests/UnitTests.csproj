@@ -21,7 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Bootstrapping\Bootstrapping.csproj" />
+    <ProjectReference Include="..\AcceAPI\AcceAPI.csproj" />
   </ItemGroup>
 
 </Project>

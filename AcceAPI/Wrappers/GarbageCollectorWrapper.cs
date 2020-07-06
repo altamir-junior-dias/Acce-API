@@ -1,6 +1,6 @@
 using System;
 
-namespace Bootstrapping.Wrappers
+namespace Acce.Wrappers
 {
     public class GarbageCollectorWrapper : IGarbageCollectorWrapper {
         public void SuppressFinalize(Object target) {

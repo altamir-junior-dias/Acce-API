@@ -1,7 +1,7 @@
 using System.Data;
-using Bootstrapping.Wrappers;
+using Acce.Wrappers;
 
-namespace Bootstrapping.Repositories
+namespace Acce.Repositories
 {
 	public class UnitOfWork : IUnitOfWork
 	{

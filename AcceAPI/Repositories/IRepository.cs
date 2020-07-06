@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace Bootstrapping.Repositories
+namespace Acce.Repositories
 {
     public interface IRepository<TR> where TR : RecordBase
     {

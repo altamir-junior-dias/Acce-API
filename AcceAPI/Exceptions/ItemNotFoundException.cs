@@ -1,6 +1,6 @@
 using System;
 
-namespace Bootstrapping.Exceptions
+namespace Acce.Exceptions
 {
     public class ItemNotFoundException : Exception
     {

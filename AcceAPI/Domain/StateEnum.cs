@@ -1,4 +1,4 @@
-namespace Bootstrapping.Domain
+namespace Acce.Domain
 {
     public enum StateEnum
     {

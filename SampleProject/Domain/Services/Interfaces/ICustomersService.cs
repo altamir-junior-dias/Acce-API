@@ -1,4 +1,4 @@
-using Bootstrapping.Domain;
+using Acce.Domain;
 using Domain.Entities;
 
 namespace Domain.Services.Interfaces

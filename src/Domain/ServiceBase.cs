@@ -85,12 +85,12 @@ namespace Acce.Domain
             var member = expression.Body as MemberExpression;
             if (member == null) member = (expression.Body as UnaryExpression)?.Operand as MemberExpression;
 
-            validationIssues.Add(new ValidationIssue { PropertyName = member.Member.Name });
+            validationIssues.Add(new ValidationIssue { PropertyName = member.Member.Name, IssueType = IssueTypeEnum.PropertyNotInformed });
         }
 
         public void AddCustomIssue(string message)
         {
-            validationIssues.Add(new ValidationIssue { Message = message });
+            validationIssues.Add(new ValidationIssue { Message = message, IssueType = IssueTypeEnum.CustomIssue });
         }
 
         public virtual void Validating(TE item)

@@ -149,8 +149,12 @@ public void ConfigureServices(IServiceCollection services)
 {
     ...
 
+    services.AddControllers(config => {
+        config.Filters.Add(typeof(ApiExceptionFilter));
+    });
+
     services.AddScoped<IDbConnection>(_ => GetConnection());
-    BootstrappingInjector.Config(services);
+    AcceInjector.Config(services);
 
     //put here injection to repositories and services
 
